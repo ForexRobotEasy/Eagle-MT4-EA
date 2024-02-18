@@ -1,0 +1,123 @@
+
+//+------------------------------------------------------------------+
+//|                                                   Eagle MT4 EA   |
+//|                                         https://forexroboteasy.com |
+//|                                      Developed by Forex Robot Easy Team |
+//+------------------------------------------------------------------+
+
+// Global variables
+double lotSize = 0.01; // Default lot size
+double profitTarget = 100.0; // Default profit target
+bool tradeBoth = true; // Default trade option - both buy and sell
+bool profitFromAll = true; // Default profit setting - take profit from all orders
+
+//+------------------------------------------------------------------+
+//|                                                OnInit function   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//|                                                OnTick function   |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Check market direction
+    bool marketDirection = AnalyzeMarketDirection();
+    
+    // Check if profit target is reached
+    if (IsProfitTargetReached())
+    {
+        RestartStrategy();
+    }
+    
+    // Check trade option and execute orders accordingly
+    if (tradeBoth)
+    {
+        if (marketDirection)
+        {
+            OpenBuyOrder();
+        }
+        else
+        {
+            OpenSellOrder();
+        }
+    }
+    else if (marketDirection)
+    {
+        OpenBuyOrder();
+    }
+    else
+    {
+        OpenSellOrder();
+    }
+}
+
+//+------------------------------------------------------------------+
+//|                                          AnalyzeMarketDirection function   |
+//+------------------------------------------------------------------+
+bool AnalyzeMarketDirection()
+{
+    // Implement market direction analysis logic here
+    // Return true if market is going up, false if market is going down
+}
+
+//+------------------------------------------------------------------+
+//|                                             OpenBuyOrder function   |
+//+------------------------------------------------------------------+
+void OpenBuyOrder()
+{
+    // Implement logic to open buy order with lot size specified by the user
+    
+    // Update account balance
+    UpdateAccountBalance();
+}
+
+//+------------------------------------------------------------------+
+//|                                            OpenSellOrder function   |
+//+------------------------------------------------------------------+
+void OpenSellOrder()
+{
+    // Implement logic to open sell order with lot size specified by the user
+    
+    // Update account balance
+    UpdateAccountBalance();
+}
+
+//+------------------------------------------------------------------+
+//|                                           IsProfitTargetReached function   |
+//+------------------------------------------------------------------+
+bool IsProfitTargetReached()
+{
+    // Implement logic to check if profit target is reached
+    // Return true if profit target is reached, false otherwise
+}
+
+//+------------------------------------------------------------------+
+//|                                             RestartStrategy function   |
+//+------------------------------------------------------------------+
+void RestartStrategy()
+{
+    // Implement logic to restart the strategy from the beginning
+    
+    // Update account balance
+    UpdateAccountBalance();
+}
+
+//+------------------------------------------------------------------+
+//|                                            UpdateAccountBalance function   |
+//+------------------------------------------------------------------+
+void UpdateAccountBalance()
+{
+    // Implement logic to update the account balance based on the profit generated
+}
+
+//+------------------------------------------------------------------+
+//|                                                OnDeinit function   |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Clean up resources before the EA is removed
+}
